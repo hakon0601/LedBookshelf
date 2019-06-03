@@ -77,6 +77,7 @@ function printRowToConsole() {
 
 function gameOver(looser) {
   console.log(`\n${looser} loose`);
+  console.log(`Select a game\nPong: [1]\nSnake: [2] `);
   reset();
 }
 

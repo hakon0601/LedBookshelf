@@ -4,7 +4,7 @@ let direction = [1, 0]; // true = moving right
 const initialUpdateInterval = 800;
 const minimumUpdateInterval = 200;
 let updateInterval = initialUpdateInterval;
-const updateIntervalSpeed = 10;
+const updateIntervalSpeed = 50;
 const rowLength = 6;
 const columnLength = 10;
 let points = 0;
@@ -87,6 +87,7 @@ function update() {
     snake.push([newHeadX, newHeadY]);
     points = points + 1;
     applePos = createRandomApple();
+    decreaseUpdateInterval(updateIntervalSpeed);
   } else {
     snake.push([newHeadX, newHeadY]);
     snake.shift();
@@ -135,7 +136,8 @@ function printToConsole() {
 }
 
 function gameOver(looser) {
-  console.log(`\n${looser} loose\nPress any key to return to menu`);
+  console.log(`\n${looser} loose`);
+  console.log(`Select a game\nPong: [1]\nSnake: [2] `);
   reset();
 }
 
@@ -143,8 +145,10 @@ function reset() {
   enabled = false;
   direction = [1, 0];
   updateInterval = initialUpdateInterval;
-  matrix = new Array(rowLength).fill(new Array(rowLength).fill('X'));
+  matrix = createEmptyMatrix();
   snake = [[0, 0]];
+  applePos = [3, 3];
+  points = 0;
 }
 
 async function playSnake() {
