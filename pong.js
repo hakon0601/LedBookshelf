@@ -20,7 +20,6 @@ function pressLeft() {
   direction = true;
   if (row.indexOf(1) === 0) {
     decreaseUpdateInterval(hardHitValue);
-    updateInterval = updateInterval - hardHitValue;
   } else if (row.indexOf(1) === 1) {
     decreaseUpdateInterval(softHitValue);
   } else {
